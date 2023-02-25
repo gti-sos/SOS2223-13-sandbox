@@ -56,5 +56,5 @@ app.get("/faces", (request,response) => {
 });
 
 app.listen(port,()=>{
-    console.log('Server ready in port ${port}');
+    console.log(`Server ready in port ${port}`);
 });
