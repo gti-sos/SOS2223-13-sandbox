@@ -1,0 +1,24 @@
+{
+  "name": "sos2223-13-sandbox",
+  "version": "0.0.0",
+  "description": "SOS2223 ID-13 sandbox\r hello\r buenos días",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gti-sos/SOS2223-13-sandbox.git"
+  },
+  "author": "ireferrom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gti-sos/SOS2223-13-sandbox/issues"
+  },
+  "homepage": "https://github.com/gti-sos/SOS2223-13-sandbox#readme",
+  "dependencies": {
+    "cool-ascii-faces": "^1.3.4",
+    "express": "^4.18.2"
+  }
+}
