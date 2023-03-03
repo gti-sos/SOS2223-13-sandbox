@@ -46,14 +46,33 @@ log(i);*/
 //con npm install se instala todos los modulos necesarios para tus json.
 var express = require("express");
 var cool = require("cool-ascii-faces");
+var bodyParser = require("body-parser");
 
 var app = express();
 var port = process.env.PORT || 12345;
+app.use(bodyParser.json());
 
-app.get("/faces", (request,response) => {
-    response.send(cool());
-    console.log("New request"); //console.log en el servidor    
+var contacts = [
+       { name : "pepe",
+       phone:12345},
+       {name : "pablo",
+       phone:6789}
+];
+
+const BASE_API_URL = "/api/v1";
+
+app.get(BASE_API_URL+"/contacts", (request,response) => {
+    response.json(contacts);
+    console.log("New GET request to /contacts"); //console.log en el servidor    
 });
+
+app.post(BASE_API_URL+"/contacts", (request,response) => {
+    var newContact = request.body;
+    console.log(`NewContact = ${JSON.stringify(newContact,null,2)}`); 
+    console.log("New POST to /contacts"); //console.log en el servidor
+    contacts.push(newContact);
+    response.sendStatus(201);
+})
 
 app.listen(port,()=>{
     console.log(`Server ready in port ${port}`);
