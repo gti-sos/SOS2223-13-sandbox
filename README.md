@@ -1,5 +1,3 @@
-# Codigo de L05
+# Codigo de L06
 
--Inicio a express
--Uso de npm con modulos
--Despliegue de Google Cloud
+- API sencilla con get y post
