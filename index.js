@@ -47,33 +47,26 @@ log(i);*/
 var express = require("express");
 var cool = require("cool-ascii-faces");
 var bodyParser = require("body-parser");
+var backend = require("./backend");
 
 var app = express();
 var port = process.env.PORT || 12345;
+
+//middleware: es cada una de las piezas de una cadena de montaje.
+app.use("/",express.static("./public")); //importante despues antes bodyParser
+
 app.use(bodyParser.json());
 
-var contacts = [
-       { name : "pepe",
-       phone:12345},
-       {name : "pablo",
-       phone:6789}
-];
+backend(app);
 
-const BASE_API_URL = "/api/v1";
-
-app.get(BASE_API_URL+"/contacts", (request,response) => {
-    response.json(contacts);
-    console.log("New GET request to /contacts"); //console.log en el servidor    
+app.get("/faces", (request,response) => {
+    response.send(cool());
+    console.log("New request");
 });
-
-app.post(BASE_API_URL+"/contacts", (request,response) => {
-    var newContact = request.body;
-    console.log(`NewContact = ${JSON.stringify(newContact,null,2)}`); 
-    console.log("New POST to /contacts"); //console.log en el servidor
-    contacts.push(newContact);
-    response.sendStatus(201);
-})
 
 app.listen(port,()=>{
     console.log(`Server ready in port ${port}`);
 });
+
+
+
